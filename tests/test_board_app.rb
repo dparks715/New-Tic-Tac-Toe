@@ -134,5 +134,39 @@ class TestBoard < Minitest::Test
 		assert_equal(false, board.winner?(marker))	
 	end
 
+	def test_winner_five_first_row
+		board = Board.new(5)
+		marker = 'X'
+		board.ttt_board = ['X', 'X', 'X', 'X', 'X',6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+		assert_equal(true, board.winner?(marker))	
+	end
+
+	def test_winner_five_row_two
+		board = Board.new(5)
+		marker = 'O'
+		board.ttt_board = [1,2,3,4,5,'O','O','O','O','O',11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
+		assert_equal(true, board.winner?(marker))	
+	end
+
+	def test_winner_five_diag
+		board = Board.new(5)
+		marker = 'O'
+		board.ttt_board = ['O',2,3,4,5,6,'O',8,9,10,11,12,'O',14,15,16,17,18,'O',20,21,22,23,24,'O']
+		assert_equal(true, board.winner?(marker))	
+	end
+
+	def test_for_no_winner_empties_five
+		board = Board.new(5)
+		marker = 'X'
+		board.ttt_board = ['X','','X','','X','','','','O','','','O','','','O','','','','','','','','','','']
+		assert_equal(false, board.winner?(marker))	
+	end
+
+	def test_for_no_winner_five
+		board = Board.new(5)
+		marker = 'X'
+		board.ttt_board = ['O','X','O','X','O','O','X','O','X','O','X','O','X','O','X','X','O','X','O','X','X','O','X','O','X']
+		assert_equal(false, board.winner?(marker))	
+	end
 
 end
