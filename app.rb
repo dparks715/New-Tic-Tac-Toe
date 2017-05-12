@@ -10,12 +10,13 @@ enable :sessions
 
 	get '/' do
 	
-		session[:board] = Board.new
 		erb :welcome, :locals => {board: session[:board]}
 
 	end
 
 	post '/select_players' do
+		board_size = params[:board_size].to_i
+		session[:board] = Board.new(board_size)
 		session[:player1_type] = params[:player1]
 		session[:player2_type] = params[:player2]
 		session[:human1] = 'no'
