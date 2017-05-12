@@ -1,0 +1,6 @@
+Simple way to simulate large number of tic tac toe games to test that Unbeatable_AI is truly unbeatable.
+
+Stripped out board display and player selection functions.
+Players have to be changed in the code.
+Uses a times loop to generate 1000 games and store the results in variables.
+Posts back win counts and percentages.
